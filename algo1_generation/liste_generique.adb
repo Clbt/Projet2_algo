@@ -8,8 +8,12 @@ package body Liste_Generique is
    end;
 
    procedure Insertion_Tete(L : in out Liste ; E : Element) is
+   PointeurDeLambiance : Pointeur := null;
+   
    begin
-	   null;
+   PointeurDeLambiance := new Cellule'(Contenu => Element , Suivant => L.Deb );
+   L.Deb := PointeurDeLambiance;		 
+   L.Taille := L.Taille + 1;
    end;
 
    procedure Insertion_Queue(L : in out Liste ; E : Element) is
@@ -18,8 +22,15 @@ package body Liste_Generique is
    end;
 
    procedure Parcourir (L : Liste) is
+   
+   Courant= Pointeur := L.Debut;
+   
    begin
-	   null;
+	  
+	  while Courant /= L.Fin loop
+	   Traiter (Courant.all);
+	   Courant:=Courant.all.Suivant;	
+	  end loop;
    end;
 
    procedure Parcourir_Par_Couples(L : Liste) is
